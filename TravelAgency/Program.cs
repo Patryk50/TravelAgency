@@ -12,7 +12,7 @@ namespace TravelAgency
         static void Main(string[] args)
         {
             Screen.InitialScreen();
-            //int.TryParse(Console.ReadLine(), out int userInput);
+            int.TryParse(Console.ReadLine(), out int userInput);
         }
     }
 }

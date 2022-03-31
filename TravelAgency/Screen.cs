@@ -15,55 +15,23 @@ namespace TravelAgency
 
             Console.WriteLine("DZISIEJSZE PROMOWANE OFERTY");
             Console.WriteLine("--------------------------------");
-            FirstTemplate(1);
-            Console.WriteLine("--------------------------------");
-            SecondTemplate(2);
-            Console.WriteLine("--------------------------------");
-            ThirdTemplate(3);
-            Console.WriteLine("--------------------------------");
+            Template(1);
             Console.Write("PROSZĘ PODAĆ NUMER WYBRANEJ OFERTY: ");
         }
 
-        static void FirstTemplate(int number)
+        static void Template(int number)
         {
             Office office = new Office();
 
-            foreach (var hotel in office.SelectedHotelsThreeStar)
+            foreach (var hotel in office.SelectedHotels)
             {
-                Console.WriteLine($"NUMER: {number}");
+                Console.WriteLine($"NUMER: {number++}");
                 Console.WriteLine($"KRAJ: {hotel.Country}");
                 Console.WriteLine($"TERMIN: {office.DepartureDate.ToShortDateString()} - {office.ArrivalDate.ToShortDateString()} ({office.Difference} dni)");
                 Console.WriteLine($"HOTEL: {hotel.HotelName} {hotel.Category}");
                 Console.WriteLine("WYŻYWIENIE: śniadanie");
                 Console.WriteLine($"CENA: {hotel.Price} PLN/os");
-            }
-        }
-        static void SecondTemplate(int number)
-        {
-            Office office = new Office();
-
-            foreach (var hotel in office.SelectedHotelsFourStar)
-            {
-                Console.WriteLine($"NUMER: {number}");
-                Console.WriteLine($"KRAJ: {hotel.Country}");
-                Console.WriteLine($"TERMIN: {office.DepartureDate.ToShortDateString()} - {office.ArrivalDate.ToShortDateString()} ({office.Difference} dni)");
-                Console.WriteLine($"HOTEL: {hotel.HotelName} {hotel.Category}");
-                Console.WriteLine("WYŻYWIENIE: All Inclusive");
-                Console.WriteLine($"CENA: {hotel.Price} PLN/os");
-            }
-        }
-        static void ThirdTemplate(int number)
-        {
-            Office office = new Office();
-
-            foreach (var hotel in office.SelectedHotelsFiveStar)
-            {
-                Console.WriteLine($"NUMER: {number}");
-                Console.WriteLine($"KRAJ: {hotel.Country}");
-                Console.WriteLine($"TERMIN: {office.DepartureDate.ToShortDateString()} - {office.ArrivalDate.ToShortDateString()} ({office.Difference} dni)");
-                Console.WriteLine($"HOTEL: {hotel.HotelName} {hotel.Category}");
-                Console.WriteLine("WYŻYWIENIE: All Inclusive");
-                Console.WriteLine($"CENA: {hotel.Price} PLN/os");
+                Console.WriteLine("--------------------------------");
             }
         }
     }

@@ -19,9 +19,7 @@ namespace TraveLogic
         public List<Hotel> ListOfHotelsFourStar = new();
         public List<Hotel> ListOfHotelsFiveStar = new();
 
-        public List<Hotel> SelectedHotelsThreeStar = new();
-        public List<Hotel> SelectedHotelsFourStar = new();
-        public List<Hotel> SelectedHotelsFiveStar = new();
+        public List<Hotel> SelectedHotels = new();
 
         public DateTime DepartureDate { get; set; }
         public DateTime ArrivalDate { get; set; }
@@ -86,14 +84,14 @@ namespace TraveLogic
         {
             var numbers = GetNumbers();
 
-            var selectHotelsThreeStar = ListOfHotelsThreeStar.FirstOrDefault(h => h.Id == numbers[0]);
-            SelectedHotelsThreeStar.Add(selectHotelsThreeStar);
+            var selectedHotels = ListOfHotelsThreeStar.FirstOrDefault(h => h.Id == numbers[0]);
+            SelectedHotels.Add(selectedHotels);
 
-            var selectHotelsFourStar = ListOfHotelsFourStar.FirstOrDefault(h => h.Id == numbers[1]);
-            SelectedHotelsFourStar.Add(selectHotelsFourStar);
+            selectedHotels = ListOfHotelsFourStar.FirstOrDefault(h => h.Id == numbers[1]);
+            SelectedHotels.Add(selectedHotels);
 
-            var selectHotelsFiveStar = ListOfHotelsFiveStar.FirstOrDefault(h => h.Id == numbers[2]);
-            SelectedHotelsFiveStar.Add(selectHotelsFiveStar);
+            selectedHotels = ListOfHotelsFiveStar.FirstOrDefault(h => h.Id == numbers[2]);
+            SelectedHotels.Add(selectedHotels);
         }
     }
 }
