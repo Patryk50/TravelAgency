@@ -13,16 +13,37 @@ namespace TravelAgency
         {
             Console.WriteLine("DZISIEJSZE PROMOWANE OFERTY");
             Console.WriteLine("--------------------------------");
-            Template(1);
+            Template();
             Console.Write("PROSZĘ PODAĆ NUMER WYBRANEJ OFERTY: ");
+            int.TryParse(Console.ReadLine(), out int userInput);
         }
 
-        static void Template(int number)
+        public static void SecondScreen()
         {
-            Office office = new Office();
+            Console.Clear();
+            Console.Write("PROSZĘ PODAĆ ILOŚĆ OSÓB DOROSŁYCH: ");
+        }
+
+        public static void ThirdScreen()
+        {
+            Console.Clear();
+            Console.WriteLine("PROSZĘ PODAĆ ILOŚĆ DZIECI: ");
+        }
+
+        public static void LastScreen()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+        }
+
+        static void Template()
+        {
+            Office office = new();
+            int number = 1;
             foreach (var hotel in office.SelectedHotels)
             {
                 string feeding;
+
                 //Instrukcja warunkowa odpowiadająca za wyświetlenie rodzaju wyżywienia
                 if (number == 1)
                 {
@@ -44,12 +65,13 @@ namespace TravelAgency
                     office.ArrivalDate = DateTime.Now.AddDays(14);
                     office.Difference = (office.ArrivalDate - office.DepartureDate).Days;
                 }
+
                 Console.WriteLine($"NUMER: {number++}");
                 Console.WriteLine($"KRAJ: {hotel.Country}");
                 Console.WriteLine($"TERMIN: {office.DepartureDate.ToShortDateString()} - {office.ArrivalDate.ToShortDateString()} ({office.Difference} dni)");
                 Console.WriteLine($"HOTEL: {hotel.HotelName} {hotel.Category}");
                 Console.WriteLine($"WYŻYWIENIE: {feeding}");
-                Console.WriteLine($"CENA: {hotel.Price} PLN/os");
+                Console.WriteLine($"CENA: {office.CalculationOfThePrice()} PLN/os");
                 Console.WriteLine("--------------------------------");
             }
         }

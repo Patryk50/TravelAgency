@@ -93,5 +93,45 @@ namespace TraveLogic
             selectedHotels = ListOfHotelsFiveStar.FirstOrDefault(h => h.Id == numbers[2]);
             SelectedHotels.Add(selectedHotels);
         }
+
+        public int CalculationOfThePrice()
+        {
+            int priceForHotel = 0;
+            int priceForTheFlight = 0;
+            //int allInclusive = 1200;
+
+            for (int i = 0; i < 3; i++)
+            {
+                priceForHotel = SelectedHotels[i].Price * Difference;
+
+                if (SelectedHotels[i].Country == "Greece" || SelectedHotels[i].Country == "Hiszpania")
+                {
+                    priceForTheFlight = 1000;
+                }
+                else if(SelectedHotels[i].Country == "Egipt")
+                {
+                    priceForTheFlight = 1500;
+                }
+                else if (SelectedHotels[i].Country == "Tajlandia")
+                {
+                    priceForTheFlight = 2000;
+                }
+                else
+                {
+                    priceForTheFlight = 2500;
+                }
+            }
+
+            /*Zasady wyliczania ceny oferty za osobę
+
+             1. Cena za hotel = cena hotelu za dobę * ilość dni pobytu.
+             2. Cena za przelot w obie strony: 1000 PLN (Europa), 1500 PLN (Afryka), 2000 PLN (Azja), 2500 PLN (Ameryka).
+             3. Jeżeli oferta jest ofertą all-inclusive => wówczas doliczamy 1200 PLN.
+             4. Całkowita cena za osobę = cena za hotel + cena za przelot + cena za all-inclusive (jeżeli jest). */
+
+            int totalPrice = priceForHotel + priceForTheFlight;
+
+            return totalPrice;
+        }
     }
 }

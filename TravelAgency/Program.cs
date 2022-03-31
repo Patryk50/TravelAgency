@@ -12,7 +12,9 @@ namespace TravelAgency
         static void Main(string[] args)
         {
             Screen.InitialScreen();
-            //int.TryParse(Console.ReadLine(), out int userInput);
+            //Screen.SecondScreen();
+            //Screen.ThirdScreen();
+            //Screen.LastScreen();
         }
     }
 }
