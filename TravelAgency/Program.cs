@@ -9,12 +9,13 @@ namespace TravelAgency
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Screen.InitialScreen();
-            //Screen.SecondScreen();
-            //Screen.ThirdScreen();
-            //Screen.LastScreen();
+            Office office = new Office();
+            Screen.InitialScreen(office);
+            Screen.SecondScreen();
+            Screen.ThirdScreen();
+            Screen.LastScreen();
         }
     }
 }
