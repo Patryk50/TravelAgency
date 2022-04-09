@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TraveLogic;
 
 namespace TravelAgency
@@ -10,13 +7,16 @@ namespace TravelAgency
     class Screen
     {
         public static List<int> Price = new();
+
         public static List<int> Number = new();
         public static int Adults { get; set; }
         public static int Kids { get; set; }
 
         public static void InitialScreen(Office office)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("DZISIEJSZE PROMOWANE OFERTY");
+            Console.ResetColor();
             Console.WriteLine("--------------------------------");
             Template(office);
             Console.Write("PROSZĘ PODAĆ NUMER WYBRANEJ OFERTY: ");
@@ -27,18 +27,21 @@ namespace TravelAgency
                 Console.Clear();
                 Adults = Price[0];
                 Kids = Price[0];
+                SecondScreen();
             }
             else if (userInput == 2)
             {
                 Console.Clear();
                 Adults = Price[1];
                 Kids = Price[1];
+                SecondScreen();
             }
             else if (userInput == 3)
             {
                 Console.Clear();
                 Adults = Price[2];
                 Kids = Price[2];
+                SecondScreen();
             }
             else
             {
@@ -49,28 +52,54 @@ namespace TravelAgency
             }
         }
 
-        public static void SecondScreen()
+        static void SecondScreen()
         {
             Console.Clear();
             Console.WriteLine("PROSZĘ PODAĆ ILOŚĆ OSÓB DOROSŁYCH: ");
             int.TryParse(Console.ReadLine(), out int userInput);
-            Adults *= userInput;
+
+            if (userInput >= 1)
+            {
+                Adults *= userInput;
+                ThirdScreen();
+            }
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Nieprawidłowe dane");
+                Console.ResetColor();
+            }
         }
 
-        public static void ThirdScreen()
+        static void ThirdScreen()
         {
             Console.Clear();
             Console.WriteLine("PROSZĘ PODAĆ ILOŚĆ DZIECI: ");
             int.TryParse(Console.ReadLine(), out int userInput);
-            Kids *= userInput;
-            Kids /= 2;
+
+            if (userInput >= 0)
+            {
+                Kids *= userInput;
+                Kids /= 2;
+                LastScreen();
+            }
+
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Nieprawidłowe dane");
+                Console.ResetColor();
+            }
         }
 
-        public static void LastScreen()
+        static void LastScreen()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"CAŁKOWITA CENA WAKACJI WYNOSI: {Adults + Kids} ZŁ");
+            Console.ResetColor();
         }
 
         static void Template(Office office)

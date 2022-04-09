@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TraveLogic
 {
@@ -16,8 +14,11 @@ namespace TraveLogic
         }
 
         public List<Hotel> ListOfHotelsThreeStar = new();
+
         public List<Hotel> ListOfHotelsFourStar = new();
+
         public List<Hotel> ListOfHotelsFiveStar = new();
+
         public List<Hotel> SelectedHotels = new();
         public DateTime DepartureDate { get; set; }
         public DateTime ArrivalDate { get; set; }

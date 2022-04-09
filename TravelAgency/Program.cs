@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TraveLogic;
 
 namespace TravelAgency
@@ -11,11 +7,11 @@ namespace TravelAgency
     {
         public static void Main(string[] args)
         {
+            Console.Title = "BIURO PODRÓŻY";
+
             Office office = new Office();
+
             Screen.InitialScreen(office);
-            Screen.SecondScreen();
-            Screen.ThirdScreen();
-            Screen.LastScreen();
         }
     }
 }
